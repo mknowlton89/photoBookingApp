@@ -5,6 +5,7 @@ import { Confirmation } from './components/Confirmation/Confirmation';
 import { SelectDate } from './components/SelectDate/SelectDate';
 import { SelectTime } from './components/SelectTime/SelectTime';
 import { ClientInfo } from './components/ClientInfo/ClientInfo';
+import { ConfirmPackage } from './components/ConfirmPackage/ConfirmPackage'; 
 import { Dashboard } from './screens/Dashboard/Dashboard';
 import { Login } from './screens/Login/Login';
 import { Signup } from './screens/Signup/Signup';
@@ -30,7 +31,8 @@ function App() {
     email: '',
     realtor: false,
     sq_ft: '',
-    package: ''
+    package: '',
+    price: ''
   })
 
   console.log(appointmentData);
@@ -47,6 +49,9 @@ function App() {
         </Route>
         <Route exact path="/book">
           <EnterAddress appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
+        </Route>
+        <Route exact path="/book/confirm-package">
+          <ConfirmPackage appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
         </Route>
         <Route exact path="/book/select-date">
           <SelectDate appointmentData={appointmentData} setAppointmentData={setAppointmentData} />

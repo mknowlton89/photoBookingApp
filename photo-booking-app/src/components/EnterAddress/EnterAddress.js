@@ -35,10 +35,15 @@ export function EnterAddress({ appointmentData, setAppointmentData }) {
         // history.push('/book/select-date');
         API.getAddress(options)
             .then(res => {
-                // Add the sq foot to the state, along with the package and the price
+                setAppointmentData(prevState => {
+                    return {
+                        ...prevState,
+                        sq_ft: res.data.content.sqft
+                    }
+                })
             })
             .then(
-                // Redirect to the next page
+                history.push('/book/confirm-package')
             )
             .catch(err => console.log(err))
     }
