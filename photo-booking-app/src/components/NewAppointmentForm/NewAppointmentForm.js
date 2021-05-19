@@ -7,30 +7,9 @@ const appointments = ['11:00 - 12:30'];
 
 let availabilityList = availability.filter((slot) => !appointments.includes(slot));
 
-// let availabilityListToPrint = availabilityList.map((slot) => {
-//     return <button id={slot} value={slot}>{slot}</button>
-// })
-
 export function NewAppointmentForm() {
     const [formStep, setFormStep] = React.useState(0)
     const { watch, register } = useForm()
-
-    let availabilityListToPrint = availabilityList.map((slot) => {
-        return (
-            <div>
-                <input
-                    type="radio"
-                    id={slot}
-                    value="true"
-                    name="true"
-                    {...register(slot)}
-                />
-                <span>
-                    {slot}
-                </span>
-            </div>
-        )
-    })
 
     const completeFormStep = () => {
         setFormStep(cur => cur + 1)
@@ -68,7 +47,20 @@ export function NewAppointmentForm() {
                     <section>
                         <h2>Choose an Appointment Time</h2>
                         <div className="choose-time-button-container">
-                            {availabilityListToPrint}
+                            {availabilityList.map((slot) =>
+                            (
+                                <>
+                                    <input
+                                        type="radio"
+                                        id={slot}
+                                        value="true"
+                                        name="appointmentSelection"
+                                        {...register(slot)}
+                                    />
+                                    <span>{slot}</span>
+                                </>
+                            )
+                            )}
                         </div>
                     </section>
                 )}
