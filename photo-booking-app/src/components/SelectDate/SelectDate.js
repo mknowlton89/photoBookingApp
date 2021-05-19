@@ -20,7 +20,7 @@ export function SelectDate({ appointmentData, setAppointmentData }) {
 
     function handleSubmit(e){
         e.preventDefault();
-        history.push('/book/date/time')
+        history.push('/book/select-time')
     }
 
     return (

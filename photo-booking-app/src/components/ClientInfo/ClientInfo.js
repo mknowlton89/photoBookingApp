@@ -27,7 +27,7 @@ export function ClientInfo({ appointmentData, setAppointmentData }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        history.push('/book/date/time/info/confirm')
+        history.push('/book/confirm')
     }
     return (
         <div>

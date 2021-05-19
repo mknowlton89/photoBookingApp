@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import API from '../../utils/API';
 import './styles.css';
-export function EnterAddress({ appointmentData, setAppointmentData}) {
+export function EnterAddress({ appointmentData, setAppointmentData }) {
 
     let history = useHistory();
 
@@ -16,7 +17,30 @@ export function EnterAddress({ appointmentData, setAppointmentData}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        history.push('/book/date')
+
+        let options = {
+            method: 'GET',
+            url: 'https://mashvisor-api.p.rapidapi.com/property',
+            params: {
+                state: appointmentData.state,
+                zip_code: appointmentData.zip,
+                address: appointmentData.street,
+                city: appointmentData.city
+            },
+            headers: {
+                'x-rapidapi-key': 'a28485e035mshea53364c530bf58p1f6a19jsn9a5ad2a4ac17',
+                'x-rapidapi-host': 'mashvisor-api.p.rapidapi.com'
+            }
+        };
+        // history.push('/book/select-date');
+        API.getAddress(options)
+            .then(res => {
+                // Add the sq foot to the state, along with the package and the price
+            })
+            .then(
+                // Redirect to the next page
+            )
+            .catch(err => console.log(err))
     }
 
     return (

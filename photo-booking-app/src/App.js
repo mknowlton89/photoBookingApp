@@ -28,7 +28,9 @@ function App() {
     firstName: '',
     lastName: '',
     email: '',
-    realtor: false
+    realtor: false,
+    sq_ft: '',
+    package: ''
   })
 
   console.log(appointmentData);
@@ -46,16 +48,16 @@ function App() {
         <Route exact path="/book">
           <EnterAddress appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
         </Route>
-        <Route exact path="/book/date">
+        <Route exact path="/book/select-date">
           <SelectDate appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
         </Route>
-        <Route exact path="/book/date/time">
+        <Route exact path="/book/select-time">
           <SelectTime appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
         </Route>
-        <Route exact path="/book/date/time/info">
+        <Route exact path="/book/add-info">
           <ClientInfo appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
         </Route>
-        <Route exact path="/book/date/time/info/confirm">
+        <Route exact path="/book/confirm">
           <Confirmation appointmentData={appointmentData} setAppointmentData={setAppointmentData} />
         </Route>
         <Route path="/dashboard">
